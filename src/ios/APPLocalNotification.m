@@ -484,6 +484,8 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
     [_delegate userNotificationCenter:center
               willPresentNotification:notification
                 withCompletionHandler:handler];
+              
+    [self fireEvent:@"foregroundNotification" notification:toast];
 
     if ([toast.trigger isKindOfClass:UNPushNotificationTrigger.class])
         return;
